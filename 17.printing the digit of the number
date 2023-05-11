@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+void printDigits(int number) 
+{
+    if (number < 0)
+	 {
+        printf("-");
+        number = -number;
+    }
+    char numberString[20];  
+    sprintf(numberString, "%d", number);
+    for (int i = 0; numberString[i] != '\0'; i++)
+	 {
+        printf("%c ", numberString[i]);
+    }
+}
+int main()
+ {
+    int number;
+    printf("Enter an integer number: ");
+    scanf("%d", &number);
+
+    printf("Digits: ");
+    printDigits(number);
+
+    return 0;
+}
