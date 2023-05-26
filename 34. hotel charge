@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+double calculateRoomCost(int numberOfPeople, int isCompanyBusiness, int age) {
+    double baseCost = 0.0;
+    double additionalCost = 0.0;
+    double discount = 0.0;
+    double roomCost = 0.0;
+
+    if (numberOfPeople == 2) {
+        baseCost = 85.00;
+    } else if (numberOfPeople == 3) {
+        baseCost = 90.00;
+    } else if (numberOfPeople == 4) {
+        baseCost = 95.00;
+    } else if (numberOfPeople > 4) {
+        baseCost = 95.00;
+        additionalCost = (numberOfPeople - 4) * 6.00;
+    }
+
+    if (isCompanyBusiness) {
+        discount = baseCost * 0.20;
+    } else if (age > 60) {
+        discount = baseCost * 0.15;
+    }
+
+    roomCost = baseCost + additionalCost - discount;
+
+    return roomCost;
+}
+
+int main() {
+    int numberOfPeople;
+    int isCompanyBusiness;
+    int age;
+
+    printf("Enter the number of people: ");
+    scanf("%d", &numberOfPeople);
+
+    printf("Is the customer staying on company business? (1 for Yes, 0 for No): ");
+    scanf("%d", &isCompanyBusiness);
+
+    printf("Enter the age of the customer: ");
+    scanf("%d", &age);
+
+    double cost = calculateRoomCost(numberOfPeople, isCompanyBusiness, age);
+
+    printf("The cost of the room is: $%.2lf\n", cost);
+
+    return 0;
+}
